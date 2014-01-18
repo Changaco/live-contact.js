@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo of live-contact.js</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="/static/css/live-contact.min.css" />
+<style>
+html { font-family: sans-serif; }
+html, body, .container { height: 100% }
+#live-contact { margin-bottom: 1em }
+</style>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="/static/js/strophe.min.js"></script>
+<script src="/static/js/live-contact.min.js"></script>
+<script>
+$(function() {
+    window.chat = LiveContact({
+        container: $('#live-contact'),
+        jid: 'anon.changaco.net',
+        dest_addr: 'echo@changaco.net',
+        dest_nick: 'Echo Bot'
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+<h1>Demo of live-contact.js</h1>
+<p>This is a live chat:</p>
+<noscript class="alert alert-danger" style="display: block">
+JavaScript is required for this to work.
+</noscript>
+<div id="live-contact"></div>
+</div>
+
+</body>
+</html>

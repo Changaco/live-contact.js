@@ -1,0 +1,44 @@
+$main_border_color = #ccc
+
+.live-contact-main
+    position: relative
+    border: 1px solid $main_border_color
+    border-radius: 5px
+    margin-bottom: 5px
+    height: 400px
+
+    & > *
+        padding: 5px
+
+    .nick1
+        color: #4673ac
+    .nick2
+        color: #75507b
+
+.live-contact-top-bar
+    border-bottom: 1px solid $main_border_color
+    overflow: auto
+    & > :first-child
+        display: inline-block
+        padding: 3px 0
+
+.live-contact-status
+    &.connected
+        background-color: #468847
+    &.away
+        background-color: #f89406
+    &.busy
+        background-color: #3a87ad
+    &.not-connected
+        background-color: #999
+
+.live-contact-messages
+    overflow: auto
+    & > p
+        margin: 0
+
+.live-contact-message
+    > .success
+        color: #5ea31c
+    > .error
+        color: #b94a48
