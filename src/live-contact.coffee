@@ -68,7 +68,8 @@ window.LiveContact = (options) -> (->
             when Strophe.Status.AUTHFAIL
                 @on_disconnected 'The authentication failed'
             when Strophe.Status.CONNECTED
-                @on_connected 'You are now connected as '+@color_nick(@from_nick)
+                @on_connected 'You are now connected as '+@color_nick(@from_nick)+
+                              ', and your messages will be sent to '+@color_nick(@dest_nick)
             when Strophe.Status.CONNFAIL
                 @on_disconnected 'The connection failed'
             when Strophe.Status.DISCONNECTED
