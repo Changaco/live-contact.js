@@ -31,12 +31,12 @@ window.LiveContact = (options) -> (->
         @main_div = $('<div class="live-contact-main" />').appendTo(@container)
 
         @top_bar = $('<div class="live-contact-top-bar" />').appendTo(@main_div)
-        @top_bar_first = $('<span />').appendTo(@top_bar)
-        @dest_nick_label = $('<span class="label label-info" />')
+        @top_bar_status = $('<span />').appendTo(@top_bar)
+        $('<span class="label label-info" />')
             .append('<i class="glyphicon glyphicon-user" /> '+escapeHTML(@dest_nick))
-            .appendTo(@top_bar_first)
-        @top_bar_first.append(' is currently ')
-        @dest_status_label = $('<span class="live-contact-status label" />').appendTo(@top_bar_first)
+            .appendTo(@top_bar_status)
+        @dest_status = $('<span> is currently </span>').appendTo(@top_bar_status)
+        @dest_status_label = $('<span class="live-contact-status label" />').appendTo(@dest_status)
         @disconnect_btn = $('<button class="btn btn-default btn-sm pull-right">Disconnect</button>').click(@disconnect).appendTo(@top_bar)
 
         @messages = $('<div class="live-contact-messages" />').appendTo(@main_div)
@@ -103,7 +103,7 @@ window.LiveContact = (options) -> (->
         @disconnect_btn.hide()
         @msg_input.hide()
         @connect_modal.show().find('input').attr('disabled', null)
-        @change_dest_status 'not connected'
+        @change_dest_status ''
         @add_log_message(msg, 'error') if msg
 
     @on_chat_message = always_return true, (stanza) =>
@@ -183,9 +183,11 @@ window.LiveContact = (options) -> (->
                 @change_dest_status 'connected'
 
     @change_dest_status = (status) =>
-        @dest_status_label.removeClass(@dest_status)
-        @dest_status = status.replace(/\W/g, '-')
-        @dest_status_label.addClass(@dest_status).text(status)
+        return @dest_status.hide() unless status
+        @dest_status.show()
+        @dest_status_label.removeClass(@dest_status_class)
+        @dest_status_class = status.replace(/\W/g, '-')
+        @dest_status_label.addClass(@dest_status_class).text(status)
 
     # Init
     @bosh_url = '/http-bind'
