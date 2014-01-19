@@ -160,15 +160,21 @@ window.LiveContact = (options) -> (->
         msg = @msg_input.val()
         @msg_input.val(null)
         if msg
-            stanza = $msg(
-                from: @conn.jid
-                to: @dest_addr
-                type: 'chat'
-                xmlns: Strophe.NS.CLIENT
-            ).c('body'
-            ).t(msg)
+            if @send_nick and @sent_nick != @from_nick
+                @conn.send @$msg('/nick '+@from_nick)
+                @sent_nick = @from_nick
+            stanza = @$msg(msg)
             @conn.send stanza
             @on_chat_message stanza.tree()
+
+    @$msg = (msg) ->
+        $msg(
+            from: @conn.jid
+            to: @dest_addr
+            type: 'chat'
+            xmlns: Strophe.NS.CLIENT
+        ).c('body'
+        ).t(msg)
 
     @on_presence = always_return true, (stanza) =>
         type = stanza.getAttribute('type')
