@@ -8,9 +8,6 @@ live-contact.js is based on the following libraries:
 - [Bootstrap](http://getbootstrap.com/)
 - [Strophe](http://strophe.im/strophejs/)
 
-live-contact.js is free software under the terms of the [LGPLv3][1].
-[1]: http://www.gnu.org/licenses/
-
 ## Usage
 
 See the `examples/` directory.
@@ -19,3 +16,7 @@ See the `examples/` directory.
 
 `run-nginx-dev.sh` runs it locally for testing and developing purposes.
 Obviously you have to install [nginx](http://nginx.org/) first.
+
+## License
+
+[CC0 Public Domain Dedication](http://creativecommons.org/publicdomain/zero/1.0/)
